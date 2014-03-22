@@ -1,5 +1,5 @@
 {"pageSetup": {
-    "width": "16cm",
+    "width": "21.3cm",
     "height": "12cm",
     "margin-top": "0cm",
     "margin-bottom": "0cm",
@@ -24,5 +24,8 @@
             ["4%", "4%", "92%", "92%"]
         ]
     }
-}
+},
+"styles": [
+    ["base", {"fontSize": 10}]
+]
 }
