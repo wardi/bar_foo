@@ -28,10 +28,6 @@ def restify(nb):
                 out.append('')
                 for line in c['source']:
                     line = line.rstrip()
-                    if line == '-----':
-                        part1 = out
-                        out = []
-                        continue
                     if line.startswith('!['):
                         cap, link = line.split('](',1)
                         cap = cap[2:]
@@ -51,7 +47,7 @@ def restify(nb):
                     out.append('`' + line + '`__')
                     out.append('-' * (len(line) + 4))
                     out.extend(['', '__ ' + target + '_'])
-    return part1, out
+    return out
 
 def unfunk(s):
     f = not_funk()
@@ -75,10 +71,7 @@ def not_funk():
 with open(sys.argv[1]) as f:
     nb = json.load(f)
 
-part1, part2 = restify(nb)
+part1 = restify(nb)
 with open(sys.argv[2], 'w') as f:
     for line in part1:
-        f.write(line.encode('utf-8') + '\n')
-with open(sys.argv[3], 'w') as f:
-    for line in part2:
         f.write(line.encode('utf-8') + '\n')
