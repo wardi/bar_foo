@@ -35,18 +35,13 @@ def restify(nb):
                         out.extend(['.. image:: ' + link, '   :alt: ' + cap])
                         continue
 
-                    if not line.startswith('### '):
+                    if not line.startswith('## '):
                         out.append(line.replace('`', '``'))
                         continue
 
-                    line = line[4:]
-                    target = '-'.join(''.join(chars)
-                        for k, chars in itertools.groupby(line.lower(),
-                        lambda x: 'a' <= x <= 'z') if k)
-                    out.extend(['.. _' + target + ':', ''])
-                    out.append('`' + line + '`__')
-                    out.append('-' * (len(line) + 4))
-                    out.extend(['', '__ ' + target + '_'])
+                    line = line[3:]
+                    out.append(line)
+                    out.append('-' * (len(line)))
     return out
 
 def unfunk(s):
