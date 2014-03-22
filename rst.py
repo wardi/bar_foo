@@ -3,6 +3,7 @@
 import json
 import sys
 import itertools
+import re
 
 def restify(nb):
     out = []
@@ -21,6 +22,7 @@ def restify(nb):
                     elif 'traceback' in o:
                         for line in o['traceback']:
                             uf = unfunk(line)
+                            uf = re.sub('          *', '\n', uf)
                             out.extend('    ' + l for l in uf.split('\n'))
                 if out[-2:] == ['::', '']:
                     del out[-2:]
@@ -40,6 +42,7 @@ def restify(nb):
                         continue
 
                     line = line[3:]
+                    line = line.replace('`', '``')
                     out.append(line)
                     out.append('-' * (len(line)))
     return out
