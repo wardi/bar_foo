@@ -3,12 +3,11 @@
 import json
 import sys
 import itertools
-import re
 
 def restify(nb):
     out = []
     for w in nb['worksheets']:
-        for c in w['cells'][1:]:
+        for c in w['cells']:
             if c['cell_type'] == 'code':
                 lines = [ln.rstrip() for ln in c['input']]
                 out.extend(['', '.. code-block:: python', ''])
@@ -22,7 +21,6 @@ def restify(nb):
                     elif 'traceback' in o:
                         for line in o['traceback']:
                             uf = unfunk(line)
-                            uf = re.sub('          *', '\n', uf)
                             out.extend('    ' + l for l in uf.split('\n'))
                 if out[-2:] == ['::', '']:
                     del out[-2:]
