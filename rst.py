@@ -10,7 +10,7 @@ def restify(nb):
         for c in w['cells'][1:]:
             if c['cell_type'] == 'code':
                 lines = [ln.rstrip() for ln in c['input']]
-                out.extend(['', '.. sourcecode:: python', ''])
+                out.extend(['', '.. code-block:: python', ''])
                 out.extend('    ' + line for line in lines if line != '##')
                 out.extend(['', '::', ''])
                 for o in c['outputs']:
