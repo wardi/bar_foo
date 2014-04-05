@@ -2,11 +2,11 @@ Overview
 --------
 
 1. `Names and values <#names-values>`_
-2. Attribute access
-3. Selectively run code
-4. Complete control
-5. Terrible ideas
-6. Coping
+2. `Attribute access <#attribute-access>`_
+3. `Selectively run code <#run-code>`_
+4. `Complete control <#complete-control>`_
+5. `Terrible ideas <#terrible-ideas>`_
+6. `Coping <#coping>`_
 
 
 .. _names-values:
@@ -1334,8 +1334,14 @@ Finally we reach the values returned from the child and parent __getattr__ metho
 
     'Ninth'
 
-5. Terrible ideas
------------------
+
+.. _terrible-ideas:
+
+`5. Terrible ideas`__
+---------------------
+
+__ terrible-ideas_
+
 
 There are some... other... ways of setting bar.foo.
 
@@ -1442,8 +1448,16 @@ This is a terrible idea, of course.
 
     pogo
 
-6. Coping
----------
+
+.. _coping:
+
+`6. Coping`__
+-------------
+
+__ coping_
+
+We have seen that in Python attribute access can become very complicated.
+Here are some suggestions to reduce the complexity of your code.
 
 1. Don't over-use classes (``namedtuple`` is quite nice!)
 2. When you use classes, don't use inheritance
